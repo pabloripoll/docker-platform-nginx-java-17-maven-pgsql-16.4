@@ -28,9 +28,12 @@ dist-ssr
 *.local
 
 # Project
-/apirest/*
-!/apirest/.gitkeep
-/platform/postgres-17.5/data
-/resources/database/*.sql
-/jenkis-*
-/vault
+vault
+platform/nginx-java-17/docker/config/supervisor/conf.d
+resources/database/*
+!resources/database/.gitkeep
+resources/docs/apirest/project/*
+!resources/docs/apirest/project/.gitkeep
+platform/pgsql-17.5/data
+apirest/*
+!apirest/.gitkeep
