@@ -29,8 +29,8 @@ dist-ssr
 
 # Project
 /apirest/*
+!/apirest/.gitkeep
 /platform/postgres-17.5/data
 /resources/database/*.sql
-/Makefile
 /jenkis-*
 /vault
