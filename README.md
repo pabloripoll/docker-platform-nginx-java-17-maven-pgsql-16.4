@@ -4,7 +4,7 @@
 
 # INFRASTRUCTURE PLATFORM
 
-# NGINX 1.28, JAVA 17 - MAVEN, POSTGRES 17.5
+# NGINX 1.28, JAVA 17 - MAVEN, POSTGRES 16.4
 
 ## Repository Overview
 
@@ -39,7 +39,7 @@ Despite Docker’s cross-platform compatibility, for intermediate to advanced so
 - **Docker Compose**: Manages multi-container setups and dependencies.
 - **GNU Make**: Automates build commands and workflows *(otherwise, commands must be executed manually)*.
 
-If you won't use GNU Make, Docker commands will have to be executed from within the `./platform/nginx-java-17/docker` and `./platform/postgres-17.5/docker` directories, e.g.:
+If you won't use GNU Make, Docker commands will have to be executed from within the `./platform/nginx-java-17/docker` and `./platform/postgres-16.4/docker` directories, e.g.:
 ```bash
 ./platform/nginx-java-17/docker $ sudo docker compose up --build --no-recreate -d
 ```
@@ -95,20 +95,20 @@ COMPOSE_PROJECT_GROUP=myuser
 
 ## <a id="db-settings"></a>Database Service Container Setting
 
-Inside `./platform/pgsql-17.5` there are a dedicated GNU Make file and the main Docker directory with the scripts to build the required platform configuration adapted from [PostgreSQL GitHub repository source](https://github.com/docker-library/postgres/blob/master/17/alpine3.22/docker-entrypoint.sh)
+Inside `./platform/pgsql-16.4` there are a dedicated GNU Make file and the main Docker directory with the scripts to build the required platform configuration adapted from [PostgreSQL GitHub repository source](https://github.com/docker-library/postgres/blob/master/17/alpine3.22/docker-entrypoint.sh)
 
 Content:
 - Linux Alpine version 3.22
-- Postgres 17.5
+- Postgres 16.4
 <br>
 
-> **Note**: There is a `./platform/pgsql-17.5/docker/.env.example` file with the variables required to build the container by `docker-compose.yml` file to create the container. Otherwise, if no GNU Make is available on developer's machine, it is required to create its `.env` manually to build the container.
+> **Note**: There is a `./platform/pgsql-16.4/docker/.env.example` file with the variables required to build the container by `docker-compose.yml` file to create the container. Otherwise, if no GNU Make is available on developer's machine, it is required to create its `.env` manually to build the container.
 
-Database environment file content at `./platform/pgsql-17.5/docker`:
+Database environment file content at `./platform/pgsql-16.4/docker`:
 ```bash
 COMPOSE_PROJECT_LEAD=myproj
 COMPOSE_PROJECT_CNET=mp-dev
-COMPOSE_PROJECT_IMGK=alpine3.22-pgsql-17.5
+COMPOSE_PROJECT_IMGK=alpine3.22-pgsql-16.4
 COMPOSE_PROJECT_NAME=mp-pgsql-dev
 COMPOSE_PROJECT_HOST="127.0.0.1"
 COMPOSE_PROJECT_PORT=7500
@@ -147,8 +147,8 @@ APIREST_GIT_HOST=github.org
 APIREST_GIT_BRANCH=develop
 APIREST_DOMAIN=
 
-DATABASE_PLTF=pgsql-17.5
-DATABASE_IMGK=alpine3.22-pgsql-17.5
+DATABASE_PLTF=pgsql-16.4
+DATABASE_IMGK=alpine3.22-pgsql-16.4
 DATABASE_PORT=4500
 DATABASE_CAAS=jar-pgsql-dev
 DATABASE_CAAS_MEM=512M
@@ -360,8 +360,8 @@ This streamlines the workflow for managing containers with mnemonic recipe names
 
 Clone the platforms repository
 ```bash
-$ git clone https://github.com/pabloripoll/docker-platform-nginx-java-17-maven-pgsql-17.5
-$ cd docker-platform-nginx-java-17-maven-pgsql-17.5
+$ git clone https://github.com/pabloripoll/docker-platform-nginx-java-17-maven-pgsql-16.4
+$ cd docker-platform-nginx-java-17-maven-pgsql-16.4
 ```
 
 Repository directories structure overview:
@@ -384,7 +384,7 @@ Repository directories structure overview:
 │   │   │   └── Dockerfile
 │   │   │
 │   │   └── Makefile
-│   └── postgres-17.5
+│   └── postgres-16.4
 │       ├── docker
 │       └── Makefile
 ├── .env
